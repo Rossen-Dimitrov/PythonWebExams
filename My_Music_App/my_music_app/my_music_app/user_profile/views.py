@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+from my_music_app.album.models import Album
 from my_music_app.user_profile.forms import UserProfileForm
 from my_music_app.utilities import get_user_profile
 
@@ -23,8 +24,21 @@ def add_profile(request):
 
 
 def details_profile(request):
-    return render(request, 'profile/profile-details.html')
+
+    context = {
+        'profile': get_user_profile,
+        'albums_count': Album.objects.all().count()
+    }
+
+    return render(request, 'profile/profile-details.html', context=context)
 
 
 def delete_profile(request):
+    profile = get_user_profile()
+
+    if request.method == 'POST':
+        profile.delete()
+        Album.objects.all().delete()
+        return redirect('home page')
+
     return render(request, 'profile/profile-delete.html')

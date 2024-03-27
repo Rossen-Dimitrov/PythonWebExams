@@ -48,3 +48,6 @@ class Album(models.Model):
             MinValueValidator(0.0),
         ),
     )
+
+    class Meta:
+        ordering = ('pk',)
