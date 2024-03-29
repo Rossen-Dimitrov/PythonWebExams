@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Edit Expense</h1>
+
+    <!-- Edit Expense Form -->
+    <div class="form">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!-- Edit Button -->
+            <input type="submit" value="Edit">
+        </form>
+        <!-- End Edit Expense Form -->
+    </div>
+{% endblock %}

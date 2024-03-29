@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Delete Expense</h1>
+
+    <!-- Delete Expense Form -->
+    <div class="form">
+        <form method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+        <!-- End Delete Expense Form -->
+
+    </div>
+{% endblock %}
